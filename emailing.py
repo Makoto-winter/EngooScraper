@@ -11,6 +11,7 @@ def send_email(my_email, password, user_email, tutors_list):
         connection.sendmail(
             from_addr=my_email,
             to_addrs=user_email,
-            msg=f"Subject:More slots of your favorite tutor(s) on DMM/Engoo\n\n "
-                f"New slots of your favorite tutor\n\n{email_text}"
+            msg=f"Subject:More slots of your favorite tutor(s) on DMM/Engoo\n\n"
+                f"New slots of your favorite tutor(s)\n\n{email_text}\n\n"
+                f"https://myfavoritedmmtutors.onrender.com"
         )
