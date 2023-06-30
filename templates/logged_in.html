@@ -29,10 +29,9 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Tutor name</th>
-      <th scope="col">Tutor's slots</th>
-      <th scope="col">Tutor's link to DMM</th>
-      <th scope="col">Tutor's link to Engoo</th>
+      <th scope="col">Tutor's name</th>
+      <th scope="col">Slots<br></th>
+      <th scope="col">Tutor's link</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -42,8 +41,10 @@
     <tr>
       <td>{{ tutor["tutorName"] }}</td>
       <td>{{ tutor["slots"] }}</td>
-      <th scope="row"><a href="{{ 'https://eikaiwa.dmm.com/teacher/index/' ~ tutor['tutorID'] }}">DMM</a></th>
-      <th scope="row"><a href="{{ 'https://engoo.com/tutors//' ~ tutor['tutorID'] }}">Engoo</a></th>
+      <td>
+        <a href="{{ 'https://eikaiwa.dmm.com/teacher/index/' ~ tutor['tutorID'] }}">DMM</a><br>
+        <a href="{{ 'https://engoo.com/tutors//' ~ tutor['tutorID'] }}">Engoo</a>
+      </td>
       <td>
         <form action="" method="post">
           <input hidden type="text" name="tutorID" value="{{ tutor['tutorID'] }}">
