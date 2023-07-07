@@ -65,12 +65,15 @@ def logged_in():
         tutors_col = data.tutor_db[user_email].find({})
 
         # add or delete a tutor ID in MongoDB
-        if request.method == "POST":
-            if request.form.getlist('add') == [""]:
-                # adding a new tutor
-                data.Add(int(request.form.get("tutorID")), user_email)
-            if request.form.getlist("delete") == [""]:
-                data.Remove(int(request.form.get("tutorID")), user_email)
+        try:
+            if request.method == "POST":
+                if request.form.getlist('add') == [""]:
+                    # adding a new tutor
+                    data.Add(int(request.form.get("tutorID")), user_email)
+                if request.form.getlist("delete") == [""]:
+                    data.Remove(int(request.form.get("tutorID")), user_email)
+        except:
+            return render_template('pages-redirect-non-existent-tutor.html')
 
         return render_template('tables-data.html', email=user_email, tutors=tutors_col)
     else:
