@@ -2,7 +2,7 @@ import brain
 import connectToMongo
 from pymongo import MongoClient
 from dotenv import load_dotenv
-import time
+import password_checker
 
 load_dotenv()
 import bcrypt
@@ -49,10 +49,14 @@ def register():
             message = 'Passwords should match!'
             return render_template('pages-register.html', message=message)
         else:
-            hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
-            user_input = {'email': email, 'password': hashed}
-            records.insert_one(user_input)
-            return render_template('pages-redirect-login.html')
+            if password_checker.password_check(password1):
+                hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
+                user_input = {'email': email, 'password': hashed}
+                records.insert_one(user_input)
+                return render_template('pages-redirect-login.html')
+            else:
+                message = 'Your password does not satisfy the requirement!'
+                return render_template('pages-register.html', message=message)
 
     return render_template('pages-register.html')
 
