@@ -13,7 +13,8 @@ class ConnectToMongo:
         # collection for a user
         self.tutors_col = self.tutor_db[user_email]
         old_dict = {"tutorID": tutor_number}
-        new_dict = {"$set": {"tutorID": tutor_number, "tutorName": scrape.get_tutor_name(tutor_number), "slots": scrape.get_all_slots(tutor_number)}}
+        new_dict = {"$set": {"tutorID": tutor_number, "tutorName": scrape.get_tutor_name(tutor_number),
+                             "slots": scrape.get_all_slots(tutor_number), "number_of_booked_slots": scrape.number_of_booked_classes_of(tutor_number)}}
         # adding the document for the user if the tutor ID does not exist in the collection.
         self.tutors_col.update_one(old_dict, new_dict, upsert=True)
 

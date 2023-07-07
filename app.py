@@ -76,6 +76,7 @@ def logged_in():
                     data.Add(int(request.form.get("tutorID")), user_email)
                 if request.form.getlist("delete") == [""]:
                     data.Remove(int(request.form.get("tutorID")), user_email)
+        # if the tutor does not exist, return to logged_in page.
         except:
             return render_template('pages-redirect-non-existent-tutor.html')
 

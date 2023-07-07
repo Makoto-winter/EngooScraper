@@ -44,7 +44,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="logged_in" class="logo d-flex align-items-center">
+      <a href="/" class="logo d-flex align-items-center">
         <img src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="">
         <span class="d-lg-block">FavTeachers</span>
       </a>
@@ -282,9 +282,9 @@
                 <thead>
                   <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Slots</th>
+                    <th scope="col">Available Slots / All Slots</th>
                     <th scope="col">Link</th>
-                    <th scope="col"></th>
+                    <th scope="col">&nbsp;&nbsp;&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -292,7 +292,7 @@
                   {% for tutor in tutors: %}
                     <tr>
                       <td>{{ tutor["tutorName"] }}</td>
-                      <td>{{ tutor["slots"].count("\n") }}</td>
+                      <td>{{ tutor["slots"].count("\n") }} / {{ tutor["number_of_booked_slots"] + tutor["slots"].count("\n") }} </td>
                       <td>
                         <a href="{{ 'https://eikaiwa.dmm.com/teacher/index/' ~ tutor['tutorID'] }}">DMM</a><br>
                         <a href="{{ 'https://engoo.com/tutors/' ~ tutor['tutorID'] }}">Engoo</a>
