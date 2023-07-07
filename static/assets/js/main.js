@@ -1,3 +1,19 @@
+  /**
+   * password visibility toggle function
+   */
+function passVisibility() {
+  var x = document.querySelectorAll("#yourPassword, #yourPassword2");
+  var arrayX = [...x];
+  arrayX.forEach(element => {
+      if (element.type === "password") {
+        element.type = "text";
+      } else {
+        element.type = "password";
+      }
+  });
+}
+
+
 /**
 * Template Name: NiceAdmin
 * Updated: May 30 2023 with Bootstrap v5.3.0
