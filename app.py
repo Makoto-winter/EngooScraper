@@ -42,10 +42,13 @@ def register():
 
         email_found = records.find_one({"email": email})
 
-        if email_found:
+        if str(email).split('@')[-1] != "gmail.com" or "yahoo.com" or "yahoo.co.jp" or "outlook.com" or "hotmail.com":
+            message = "You can only use gmail.com, yahooo.com, yahoo.co.jp, outlook.com or hotmail.com!"
+            return render_template('pages-register.html', message=message)
+        elif email_found:
             message = 'This email already exists in our database.'
             return render_template('pages-register.html', message=message)
-        if password1 != password2:
+        elif password1 != password2:
             message = 'Passwords should match!'
             return render_template('pages-register.html', message=message)
         else:
@@ -70,10 +73,19 @@ def logged_in():
 
         # add or delete a tutor ID in MongoDB
         try:
-            if request.method == "POST":
+             if request.method == "POST":
+                # extracting ID from the input address sucha as
+                # https://engoo.com/tutors/37327
+                # https://eikaiwa.dmm.com/teacher/index/49833/
+                try:
+                    tutorID = int(str(request.form.get("tutor_address")).split('/')[-2])
+                except:
+                    tutorID = int(str(request.form.get("tutor_address")).split('/')[-1])
+
                 if request.form.getlist('add') == [""]:
                     # adding a new tutor
-                    data.Add(int(request.form.get("tutorID")), user_email)
+                    data.Add(tutorID, user_email)
+                    pass
                 if request.form.getlist("delete") == [""]:
                     data.Remove(int(request.form.get("tutorID")), user_email)
         # if the tutor does not exist, return to logged_in page.

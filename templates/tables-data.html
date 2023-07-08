@@ -48,84 +48,10 @@
         <img src="{{ url_for('static', filename='assets/img/logo.png') }}" alt="">
         <span class="d-lg-block">FavTeachers</span>
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        <li class="nav-item dropdown">
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
-
-          </ul><!-- End Notification Dropdown Items -->
-
-        </li><!-- End Notification Nav -->
-
-
-
 
         <li class="nav-item dropdown pe-3">
 
@@ -179,46 +105,7 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li>End Profile Page Nav -->
-
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
-      </li>End F.A.Q Page Nav -->
-
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li>End Contact Page Nav -->
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="logout">
-          <i class="bi bi-box-arrow-right"></i>
-          <span>Sign out</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
-
-
-    </ul>
-
-  </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
 
@@ -243,18 +130,13 @@
               <br>
               <form action="" method="post">
                 <div class="form-row align-items-center">
-                  <div class="col-sm-3 my-1">
-                    <input type="text" name="tutorID" class="form-control" id="inlineFormInputName" placeholder="Tutor ID">
+                  <div class="col-sm-8 my-1">
+                    <input type="text" name="tutor_address" class="form-control" id="inlineFormInputName" placeholder="Paste tutor's address here like https://eikaiwa.dmm.com/teacher/index/49833/">
                   </div>
               
                   <div class="col-auto my-1">
                     <button type="submit" name="add" class="btn btn-primary"><i class="bi bi-person-fill-add"></i>&nbsp;Add</button>
                   </div>
-                  <small id="emailHelp" class="form-text text-muted">
-                    Enter your favorite tutor's ID.
-                    "tutor ID" is the number part of the tutor's web address.
-                    In the following case, the tutorID is 12345. https://eikaiwa.dmm.com/teacher/index/12345/
-                  </small>
                 </div>
               </form>
               <br>
