@@ -73,21 +73,24 @@ def logged_in():
 
         # add or delete a tutor ID in MongoDB
         try:
-             if request.method == "POST":
-                # extracting ID from the input address sucha as
-                # https://engoo.com/tutors/37327
-                # https://eikaiwa.dmm.com/teacher/index/49833/
-                try:
-                    tutorID = int(str(request.form.get("tutor_address")).split('/')[-2])
-                except:
-                    tutorID = int(str(request.form.get("tutor_address")).split('/')[-1])
+            if request.method == "POST":
 
+                # adding a tutor
                 if request.form.getlist('add') == [""]:
-                    # adding a new tutor
-                    data.Add(tutorID, user_email)
-                    pass
-                if request.form.getlist("delete") == [""]:
+                    # extracting ID from the input address sucha as
+                    # https://engoo.com/tutors/37327
+                    # https://eikaiwa.dmm.com/teacher/index/49833/
+                    try:
+                        tutorID = int(str(request.form.get("tutor_address")).split('/')[-2])
+                    except:
+                        tutorID = int(str(request.form.get("tutor_address")).split('/')[-1])
+                    finally:
+                        # adding a new tutor
+                        data.Add(tutorID, user_email)
+                # deleting a tutor
+                elif request.form.getlist("delete") == [""]:
                     data.Remove(int(request.form.get("tutorID")), user_email)
+
         # if the tutor does not exist, return to logged_in page.
         except:
             return render_template('pages-redirect-non-existent-tutor.html')
@@ -133,9 +136,11 @@ def logout():
     else:
         return render_template('index.html')
 
+
 @app.route("/terms", methods=["POST", "GET"])
 def terms():
     return render_template('terms.html')
+
 
 if __name__ == "__main__":
     # app.run(debug=True, use_reloader=False)
