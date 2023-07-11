@@ -42,8 +42,9 @@ def register():
 
         email_found = records.find_one({"email": email})
 
-        if str(email).split('@')[-1] != "gmail.com" or "yahoo.com" or "yahoo.co.jp" or "outlook.com" or "hotmail.com":
-            message = "You can only use gmail.com, yahooo.com, yahoo.co.jp, outlook.com or hotmail.com!"
+        if str(email).split('@')[-1] != ("gmail.com" or "yahoo.com" or "yahoo.co.jp" or "outlook.com" or "hotmail.com"):
+            print(str(email).split('@')[-1])
+            message = "You can only use gmail.com, yahoo.com, yahoo.co.jp, outlook.com or hotmail.com!"
             return render_template('pages-register.html', message=message)
         elif email_found:
             message = 'This email already exists in our database.'
