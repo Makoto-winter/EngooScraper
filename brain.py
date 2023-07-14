@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-import atexit, scrape, emailing, os
+import atexit, scrape, emailing, os, datetime
 from dotenv import load_dotenv
 load_dotenv()
 import connectToMongo
@@ -13,7 +13,7 @@ tutor_db = test_client['tutorDB']
 data = connectToMongo.ConnectToMongo()
 
 def brain():
-    print("brain initiated")
+    print(datetime.datetime.now(), " Brain initiated")
     # 👇collection for one user(collection name = user_email)
     for user_email in tutor_db.list_collection_names():
         slot_increased_tutor_list = []
@@ -27,7 +27,8 @@ def brain():
                 if data.IsIncreased(slots, tutor['tutorID'], user_email):
                     slot_increased_tutor_list.append({"tutorName": tutor["tutorName"], "slots": tutor["slots"]})
                 else:
-                    print(f"For the user: {user_email}. No increased slots: {tutor['tutorName']}")
+                    pass
+                    # print(f"For the user: {user_email}. No increased slots: {tutor['tutorName']}")
 
             if slot_increased_tutor_list:
                 print(f"For the user: {user_email}. Some slots increase!! {slot_increased_tutor_list}\n"

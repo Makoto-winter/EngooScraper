@@ -24,10 +24,6 @@ def get_all_slots(tutor_number):
     # all_slots is a string
     all_slots = "\n".join(all_slots)
 
-    taken_slots = soup.find_all(name="span", string="予約済")
-    number_of_booked_slots = len(taken_slots)
-
-    all_slots += str(number_of_booked_slots)
     return all_slots
 
 
