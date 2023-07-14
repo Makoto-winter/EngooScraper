@@ -145,7 +145,8 @@ def terms():
 
 if __name__ == "__main__":
     # for real deployment, online server
-    app.run(debug=False, use_reloader=False)
+    # app.run(debug=False, use_reloader=False)
+    app.run()
 
     # for local server
     # from waitress import serve
