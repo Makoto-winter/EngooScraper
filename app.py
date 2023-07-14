@@ -144,6 +144,9 @@ def terms():
 
 
 if __name__ == "__main__":
-    from waitress import serve
+    # for real deployment, online server
+    app.run(debug=True, use_reloader=False)
 
-    serve(app, host="0.0.0.0", port=8080)
+    # for local server
+    # from waitress import serve
+    # serve(app, host="0.0.0.0", port=8080)
