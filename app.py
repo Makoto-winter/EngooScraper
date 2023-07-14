@@ -17,7 +17,6 @@ data = connectToMongo.ConnectToMongo()
 # users' login data collection
 records = tutor_db["col_login"]
 
-brain.brain()
 brain.executeEveryXminute()
 
 # ##########    webpage part    #############
