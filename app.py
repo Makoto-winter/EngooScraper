@@ -17,6 +17,7 @@ data = connectToMongo.ConnectToMongo()
 # users' login data collection
 records = tutor_db["col_login"]
 
+brain.brain()
 brain.executeEveryXminute()
 
 # ##########    webpage part    #############
@@ -146,7 +147,7 @@ def terms():
 if __name__ == "__main__":
     # for real deployment, online server
     # app.run(debug=False, use_reloader=False)
-    app.run(host="0.0.0.0")
+    app.run()
 
     # for local server
     # from waitress import serve

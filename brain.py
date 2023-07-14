@@ -5,7 +5,7 @@ load_dotenv()
 import connectToMongo
 from apscheduler.schedulers.background import BackgroundScheduler
 
-intervalMinute = 0.5
+intervalMinute = 10
 
 test_client = MongoClient(os.getenv('ATLAS_URI'))
 
@@ -40,7 +40,6 @@ def brain():
 
 def executeEveryXminute():
     scheduler = BackgroundScheduler()
-    # scheduler.add_job(brain, 'cron', minute="*")
     scheduler.add_job(brain, 'interval', minutes=intervalMinute)
     scheduler.start()
     atexit.register(lambda: scheduler.shutdown(wait=False))
