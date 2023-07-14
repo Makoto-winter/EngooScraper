@@ -5,7 +5,7 @@ load_dotenv()
 import connectToMongo
 from apscheduler.schedulers.background import BackgroundScheduler
 
-intervalMinute = 10
+intervalMinute = 2
 
 test_client = MongoClient(os.getenv('ATLAS_URI'))
 
