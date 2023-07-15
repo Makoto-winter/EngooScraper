@@ -143,14 +143,8 @@ def terms():
     return render_template('terms.html')
 
 
-@app.route("/.well-known/pki-validation/E805A92B61AE0415BE1A2BD600941AE2.txt", methods=["POST", "GET"])
-def ssl():
-    return render_template('E805A92B61AE0415BE1A2BD600941AE2.txt')
-
-
 if __name__ == "__main__":
     # for real deployment, online server
-    # app.run(debug=False, use_reloader=False)
     app.run()
 
     # for local server
