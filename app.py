@@ -8,6 +8,7 @@ load_dotenv()
 import bcrypt
 import os
 from flask import Flask, render_template, request, url_for, redirect, session, flash
+from flask_talisman import Talisman
 
 # ############   connectToMongo object    ############
 test_client = MongoClient(os.getenv('ATLAS_URI'))
@@ -142,6 +143,8 @@ def logout():
 def terms():
     return render_template('terms.html')
 
+
+Talisman(app, content_security_policy=None)
 
 if __name__ == "__main__":
     # for real deployment, online server
