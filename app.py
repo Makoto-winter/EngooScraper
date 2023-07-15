@@ -145,7 +145,7 @@ def terms():
 
 @app.route("/.well-known/pki-validation/E805A92B61AE0415BE1A2BD600941AE2.txt", methods=["POST", "GET"])
 def ssl():
-    return render_template('sslcertificate.html')
+    return render_template('E805A92B61AE0415BE1A2BD600941AE2.txt')
 
 
 if __name__ == "__main__":
