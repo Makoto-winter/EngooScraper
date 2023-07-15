@@ -144,7 +144,7 @@ def terms():
 
 
 @app.route("/.well-known/pki-validation/E805A92B61AE0415BE1A2BD600941AE2.txt", methods=["POST", "GET"])
-def terms():
+def ssl():
     return render_template('sslcertificate.html')
 
 
