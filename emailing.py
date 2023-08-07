@@ -13,5 +13,5 @@ def send_email(my_email, password, user_email, tutors_list):
             to_addrs=user_email,
             msg=f"Subject:More slots of your favorite tutor(s) on DMM/Engoo\n\n"
                 f"New slots of your favorite tutor(s)\n\n{email_text}\n"
-                f"https://myfavoritedmmtutors.onrender.com"
+                f"https://www.favteachers.net"
         )
