@@ -5,11 +5,17 @@ load_dotenv()
 
 class ConnectToMongo:
     def __init__(self):
-        # ########## setting MongoDB ############
+        # ########## setting up MongoDB ############
         self.test_client = MongoClient(os.getenv('ATLAS_URI'))
         self.tutor_db = self.test_client['tutorDB']
 
     def Add(self, tutor_number, user_email):
+        """
+        This function is to add a favorite tutor to user's database.
+        :param tutor_number:
+        :param user_email:
+        :return:
+        """
         # collection for a user
         self.tutors_col = self.tutor_db[user_email]
         old_dict = {"tutorID": tutor_number}
@@ -19,21 +25,36 @@ class ConnectToMongo:
         self.tutors_col.update_one(old_dict, new_dict, upsert=True)
 
     def Remove(self, tutor_number, user_email):
+        """
+        This function is remove a favorite tutor from user's database.
+        :param tutor_number:
+        :param user_email:
+        :return:
+        """
         # collection for a user
         self.tutors_col = self.tutor_db[user_email]
         self.tutors_col.delete_one({"tutorID": tutor_number})
 
     def IsIncreased(self, slots_now, tutor_number, user_email):
+        """
+        This function checks if the number of slots of a tutor has increased compared to 10 mins ago.
+        :param slots_now:
+        :param tutor_number:
+        :param user_email:
+        :return:
+        """
         # collection for a user
         self.tutors_col = self.tutor_db[user_email]
         try:
-            # slots_now.count("\n") is the most recent slots.
-            # self.tutors_col.find_one({"... is old because they were stored in DB with Add method.
+            # slots_now.count("\n") is the number of slots now.
+            # self.tutors_col.find_one({"...) contains the humber of slots 10 min ago
+            # because they were stored in DB with Add method.
             if slots_now.count("\n") > self.tutors_col.find_one({"tutorID": tutor_number})["slots"].count("\n"):
                 return True
             else:
                 return False
-        except TypeError as e:  # when adding a tutor for the first time and previous number of slots is not on mongoDB
+        # when adding a tutor for the first time and previous number of slots is NOT on mongoDB
+        except TypeError as e:
             print("IsIncreased set True because the tutor was not on the DB. Error message:")
             print(e)
             return True
