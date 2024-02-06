@@ -45,7 +45,12 @@ def get_tutor_name(tutor_number):
     webpage = response.text
 
     soup = BeautifulSoup(webpage, "html.parser")
-    tutor_name = soup.select_one('.area-detail h1').getText().split("（")[0]
+    selected_element = soup.select_one('.area-detail h1')
+    if selected_element is not None:
+        tutor_name = selected_element.getText().split("（")[0]
+    else:
+        tutor_name = "No Tutor Name"
+
     return tutor_name
 
 
